@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: 'tips#show'
   devise_for :users
   resources :competitions
   resources :tips
