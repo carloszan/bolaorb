@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  hour: 2018-11-18 13:54:49
+  tipHomeTeam: 
+  tipAwayTeam: MyString
+  game: one
+
+two:
+  hour: 2018-11-18 13:54:49
+  tipHomeTeam: 
+  tipAwayTeam: MyString
+  game: two

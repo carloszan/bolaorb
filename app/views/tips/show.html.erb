@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Hour:</strong>
+  <%= @tip.hour %>
+</p>
+
+<p>
+  <strong>Tiphometeam:</strong>
+  <%= @tip.tipHomeTeam %>
+</p>
+
+<p>
+  <strong>Tipawayteam:</strong>
+  <%= @tip.tipAwayTeam %>
+</p>
+
+<p>
+  <strong>Game:</strong>
+  <%= @tip.game %>
+</p>
+
+<%= link_to 'Edit', edit_tip_path(@tip) %> |
+<%= link_to 'Back', tips_path %>
