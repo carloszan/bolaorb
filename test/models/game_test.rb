@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class GameTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  should have_many(:tips)
+  should belong_to(:competition)
 end

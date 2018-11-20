@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class TipTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  should belong_to(:game)
+  should belong_to(:user)
 end
