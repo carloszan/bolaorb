@@ -18,4 +18,12 @@ class GamePolicy < ApplicationPolicy
   def destroy?
     user.admin?
   end
+
+  def finished?
+    user.admin?
+  end
+
+  def close?
+    finished?
+  end
 end

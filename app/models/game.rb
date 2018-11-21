@@ -2,7 +2,7 @@ class Game < ApplicationRecord
   has_many :tips
   belongs_to :competition
 
-  def finish
+  def finish!
     users = User.includes(:tips)
 
     users.each do |user|

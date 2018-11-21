@@ -21,6 +21,7 @@ class GamesController < ApplicationController
 
   # GET /games/1/edit
   def edit
+    authorize @game
   end
 
   # POST /games
@@ -44,6 +45,8 @@ class GamesController < ApplicationController
   # PATCH/PUT /games/1
   # PATCH/PUT /games/1.json
   def update
+    authorize @game
+    
     respond_to do |format|
       if @game.update(game_params)
         format.html { redirect_to @game, notice: 'Game was successfully updated.' }
@@ -66,12 +69,15 @@ class GamesController < ApplicationController
   end
 
   def close
+    authorize @game
   end
 
   def finished
+    authorize @game
+    
     if(!@game.finished?)
       
-      @game.finish
+      @game.finish!
       
       redirect_to games_url, notice: 'Jogo foi finalizado'
     else
@@ -91,7 +97,9 @@ class GamesController < ApplicationController
     end
 
     def game_finish
-      if(Game.find(params[:id]).finished?)
+      authorize @game
+      
+      if(@game.finished?)
         redirect_to games_url, notice: 'Jogo já foi finalizado'
       end
     end
