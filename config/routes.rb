@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'tips#show'
+  root to: 'games#index'
   devise_for :users
   resources :competitions
   resources :tips
