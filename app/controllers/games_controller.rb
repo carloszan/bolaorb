@@ -1,5 +1,6 @@
 class GamesController < ApplicationController
-  before_action :set_game, only: [:show, :edit, :update, :destroy]
+  before_action :set_game, only: [:show, :edit, :close, :finished, :update, :destroy]
+  before_action :game_finish, only: [:close]
 
   # GET /games
   # GET /games.json
@@ -64,6 +65,20 @@ class GamesController < ApplicationController
     end
   end
 
+  def close
+  end
+
+  def finished
+    if(!@game.finished?)
+      
+      @game.finish
+      
+      redirect_to games_url, notice: 'Jogo foi finalizado'
+    else
+      redirect_to games_url, notice: 'Jogo já foi finalizado'
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_game
@@ -72,6 +87,12 @@ class GamesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def game_params
-      params.require(:game).permit(:homeTeam, :awayTeam, :hour, :scoreHomeTeam, :scoreAwayTeam)
+      params.require(:game).permit(:homeTeam, :awayTeam, :hour, :scoreHomeTeam, :scoreAwayTeam, :competition_id)
+    end
+
+    def game_finish
+      if(Game.find(params[:id]).finished?)
+        redirect_to games_url, notice: 'Jogo já foi finalizado'
+      end
     end
 end
