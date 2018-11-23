@@ -2,4 +2,12 @@
   Jogo concluido?
 </div>
 
-<%= link_to 'Fechar jogo', finish_game_url, :confirm => 'Are you sure?', :method => :post %>
+<%= form_tag(finish_game_url, method: "post") do %>
+  <%= label_tag(:home_score, "Home Score:") %>
+  <%= text_field_tag(:home_score) %>
+  <%= label_tag(:away_score, "Away Score:") %>
+  <%= text_field_tag(:away_score) %>
+  <%= submit_tag("Fechar jogo") %>
+<% end %>
+
+<%#= link_to 'Fechar jogo', finish_game_url, :confirm => 'Are you sure?', :method => :post %>

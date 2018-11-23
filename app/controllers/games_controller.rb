@@ -74,6 +74,8 @@ class GamesController < ApplicationController
 
   def finished
     authorize @game
+
+    @game.update_attributes(scoreHomeTeam: params[:home_score], scoreAwayTeam: params[:away_score])
     
     if(!@game.finished?)
       
