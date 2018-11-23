@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :rankings
+  resources :rankings, only: [:index]
   root to: 'games#index'
   devise_for :users
   resources :competitions

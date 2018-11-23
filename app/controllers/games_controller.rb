@@ -61,6 +61,8 @@ class GamesController < ApplicationController
   # DELETE /games/1
   # DELETE /games/1.json
   def destroy
+    authorize @game
+    
     @game.destroy
     respond_to do |format|
       format.html { redirect_to games_url, notice: 'Game was successfully destroyed.' }
@@ -74,10 +76,10 @@ class GamesController < ApplicationController
 
   def finished
     authorize @game
-
-    @game.update_attributes(scoreHomeTeam: params[:home_score], scoreAwayTeam: params[:away_score])
     
     if(!@game.finished?)
+
+      @game.update_attributes(scoreHomeTeam: params[:home_score], scoreAwayTeam: params[:away_score])
       
       @game.finish!
       
